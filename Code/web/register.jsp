@@ -17,25 +17,25 @@
 
         <div class="form-group">
             <label for="ten_dang_nhap" class="form-label">Tên đăng nhập</label>
-            <input id="ten_dang_nhap" class="form-control" name="ten_dang_nhap" type="text" placeholder="VD: Chung123">
+            <input id="ten_dang_nhap" class="form-control" name="ten_dang_nhap" type="text">
             <span class="form-message"></span>
         </div>
 
         <div class="form-group">
             <label for="password" class="form-label">Mật khẩu</label>
-            <input id="password" class="form-control" name="password" type="password" placeholder="VD: Chung123">
+            <input id="password" class="form-control" name="password" type="password">
             <span class="form-message"></span>
         </div>
         
         <div class="form-group">
             <label for="fullname" class="form-label">Họ và tên chủ tài khoản</label>
-            <input id="fullname" class="form-control" name="fullname" type="text" placeholder="VD: Chung123">
+            <input id="fullname" class="form-control" name="fullname" type="text">
             <span class="form-message"></span>
         </div>
         
         <div class="form-group">
             <label for="phone" class="form-label">Số điện thoại của bạn</label>
-            <input id="phone" class="form-control" name="phone" type="text" placeholder="VD: 0123456789">
+            <input id="phone" class="form-control" name="phone" type="text">
             <span class="form-message"></span>
         </div>
 

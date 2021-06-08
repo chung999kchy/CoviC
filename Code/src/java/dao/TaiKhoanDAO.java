@@ -24,7 +24,7 @@ public class TaiKhoanDAO implements DAO<TaiKhoan> {
 
     private final String SQL_INSERT = "Insert into tai_khoan "
             + "(id_loai_tai_khoan, ten_dang_nhap, password, ten_nguoi_dung,"
-            + " so_dien_thoai, avatar) values " + "(?,?,?,?,?,?)";
+            + " so_dien_thoai, avatar, id_khu_cach_ly) values " + "(?,?,?,?,?,?,?)";
 
     Connection conn = ConnectDB.getConnection();
     NguoiCachLyDAO nguoiCachLyDAO = new NguoiCachLyDAO();
@@ -100,6 +100,7 @@ public class TaiKhoanDAO implements DAO<TaiKhoan> {
             prep.setString(4, t.getTenNguoiDung());
             prep.setInt(5, t.getSoDienThoai());
             prep.setString(6, t.getAvatar());
+            prep.setInt(7, t.getKhuCachLy().getIdKhuCachLy());
 
             //System.out.println(prep);
             prep.executeUpdate();

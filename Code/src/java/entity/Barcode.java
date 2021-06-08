@@ -23,12 +23,14 @@ public class Barcode {
     @Column(name = "time_end")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeEnd;
+    private int lan;
 
-    public Barcode(NguoiCachLy ngCachLy, String ma, Date timeBegin, Date timeEnd) {
+    public Barcode(NguoiCachLy ngCachLy, String ma, Date timeBegin, Date timeEnd, int lan) {
         this.ngCachLy = ngCachLy;
         this.ma = ma;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
+        this.lan = lan;
     }
 
     public Barcode(){
@@ -64,6 +66,14 @@ public class Barcode {
 
     public void setTimeEnd(Date timeEnd) {
         this.timeEnd = timeEnd;
+    }
+
+    public int getLan() {
+        return lan;
+    }
+
+    public void setLan(int lan) {
+        this.lan = lan;
     }
     
     

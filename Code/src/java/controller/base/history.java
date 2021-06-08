@@ -14,6 +14,7 @@ import entity.KqXetNghiem;
 import entity.NguoiCachLy;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Hashtable;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,36 +42,18 @@ public class history extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int id;
-        String ma = null;
-        try {
-            id = Integer.parseInt(request.getParameter("id"));
-        } catch (Exception e) {
-            id = 0;
-            ma = request.getParameter("ma");
-        }
+        int id = Integer.parseInt(request.getParameter("id"));
         NguoiCachLyDAO ngDao = new NguoiCachLyDAO();
+        NguoiCachLy nguoi = ngDao.get(id);
         KqXetNghiemDAO kqDao = new KqXetNghiemDAO();
-        NguoiCachLy nguoi = null;
-        List<KqXetNghiem> list = null;
-        if (id == 0) { // bang ma
-            BarcodeDAO barDao = new BarcodeDAO();
-            Barcode barcode = barDao.findByMa(ma);
-            nguoi = ngDao.get(barcode.getNgCachLy().getIdNguoiCachLy());
-            list = kqDao.findByIdNgCachLy(nguoi.getIdNguoiCachLy());
-        } else { // bang id
-
-            nguoi = ngDao.get(id);
-            list = kqDao.findByIdNgCachLy(id);
-        }
-
+        List<KqXetNghiem> list = kqDao.findByIdNgCachLy(id);
         request.setAttribute("nguoi", nguoi);
         request.setAttribute("list2", list);
         RequestDispatcher view = request.getRequestDispatcher("history.jsp");
         view.forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

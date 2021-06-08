@@ -70,9 +70,9 @@ public class QR_CODE {
 
     public void addQR_CODE(NguoiCachLy nguoi) {
 
+        int lan = 0;
         int hour = 1;
         BarcodeDAO dao = new BarcodeDAO();
-        dao.deleteByNguoi(nguoi);
         Barcode bar = new Barcode();
         bar.setNgCachLy(nguoi);
         String timeBegin = Utils.getToday();
@@ -85,13 +85,14 @@ public class QR_CODE {
         bar.setTimeBegin(new java.sql.Timestamp(time_begin.getTime()));
         Date time_end = new Date(time_begin.getTime() + TimeUnit.HOURS.toMillis(hour));
         bar.setTimeEnd(new java.sql.Timestamp(time_end.getTime()));
+        bar.setLan(lan);
         String ma = Utils.md5(Utils.getToday() + nguoi.getIdNguoiCachLy());
         bar.setMa(ma);
         dao.create(bar);
 
         // tao ma qr-code hien thi html
-        String link = "localhost:8085/datn/history?ma=" + ma;
-        String file = "C:\\Users\\CHUNG\\Documents\\NetBeansProjects\\datn\\web\\assets\\img\\code.png";
+        String link = "localhost:8085/datn/ScanQR?ma=" + ma;
+        String file = "C:\\Users\\CHUNG\\Documents\\NetBeansProjects\\CoviC\\Code\\web\\assets\\img\\code.png";
         CREATE_QR(link, file);
         System.out.println("da tao ma tai link: " + link);
     }

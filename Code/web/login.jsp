@@ -16,13 +16,13 @@
 
         <div class="form-group">
             <label for="ten_dang_nhap" class="form-label">Tên đăng nhập</label>
-            <input id="ten_dang_nhap" class="form-control" name="ten_dang_nhap" type="text" placeholder="VD: Chung123">
+            <input id="ten_dang_nhap" class="form-control" name="ten_dang_nhap" type="text" >
             <span class="form-message"></span>
         </div>
 
         <div class="form-group">
             <label for="password" class="form-label">Mật khẩu</label>
-            <input id="password" class="form-control" name="password" type="password" placeholder="VD: Chung123">
+            <input id="password" class="form-control" name="password" type="password" >
             <span class="form-message"></span>
         </div>
 

@@ -24,7 +24,7 @@ import java.util.List;
 public class BarcodeDAO implements DAO<Barcode> {
 
     private final String SQL_INSERT = "Insert into barcode"
-            + "(ng_cach_ly_id, ma, time_begin, time_end) values " + "(?, ?, ?, ?)";
+            + "(ng_cach_ly_id, ma, time_begin, time_end, lan) values " + "(?, ?, ?, ?, ?)";
     
 
     Connection conn = ConnectDB.getConnection();
@@ -43,6 +43,7 @@ public class BarcodeDAO implements DAO<Barcode> {
                 p.setMa(rs.getString("ma"));
                 p.setTimeBegin(rs.getTimestamp("time_begin"));
                 p.setTimeEnd(rs.getTimestamp("time_end"));
+                p.setLan(rs.getInt("lan"));
                 qq.add(p);
             }
             return qq;
@@ -82,6 +83,7 @@ public class BarcodeDAO implements DAO<Barcode> {
             prep.setString(2, t.getMa());
             prep.setTimestamp(3, (java.sql.Timestamp)t.getTimeBegin());
             prep.setTimestamp(4, (java.sql.Timestamp)t.getTimeEnd());
+            prep.setInt(5, t.getLan());
             prep.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,15 +101,7 @@ public class BarcodeDAO implements DAO<Barcode> {
         }
     }
     
-    public void deleteByNguoi(NguoiCachLy t) {
-        try {
-            String sql = "delete from barcode where ng_cach_ly_id = " + t.getIdNguoiCachLy();
-            Statement stmt = conn.createStatement();
-            stmt.executeUpdate(sql);
-        } catch (SQLException x) {
-            x.printStackTrace();
-        }
-    }
+    
 
     @Override
     public void update(Barcode t, Hashtable<String, String> my_dict) {
@@ -125,7 +119,8 @@ public class BarcodeDAO implements DAO<Barcode> {
                 }  
             }
             change = change.substring(0, change.length()-1);
-            sql_update += change + " where ma = "+t.getMa();
+            sql_update += change + " where ma = '"+t.getMa()+"'";
+            System.out.println("abc: "+sql_update);
             Statement stmt = conn.createStatement();
             
             stmt.executeUpdate(sql_update);
@@ -133,6 +128,16 @@ public class BarcodeDAO implements DAO<Barcode> {
             x.printStackTrace();
         }
         
+    }
+    
+    public void deleteQRByTime(int idNguoi){
+        try {
+            String sql = "delete from barcode where ng_cach_ly_id = " + idNguoi+" and (now() > time_end or lan > 0)";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException x) {
+            x.printStackTrace();
+        }
     }
 
 }

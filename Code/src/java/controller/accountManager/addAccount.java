@@ -7,6 +7,7 @@ package controller.accountManager;
 
 import dao.LoaiTaiKhoanDAO;
 import dao.TaiKhoanDAO;
+import entity.KhuCachLy;
 import entity.LoaiTaiKhoan;
 import entity.TaiKhoan;
 import java.io.IOException;
@@ -52,12 +53,16 @@ public class addAccount extends HttpServlet {
         String phone = request.getParameter("so_dien_thoai");
         String tenLoai = request.getParameter("loai");
         int phoneNumber = Integer.parseInt(phone);
-
+        HttpSession ss = request.getSession();
+        KhuCachLy khu = (KhuCachLy) ss.getAttribute("khuCachLy");
+        
+        
         //check ten dang nhap
         TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
         TaiKhoan user = taiKhoanDAO.find(tenDN);
         if (user != null) {
-
+            Notification noti = new Notification("Error", "Tài khoản đã tồn tại", "error");
+            request.setAttribute("notify", noti);
             RequestDispatcher rt = request.getRequestDispatcher("add-nhansu.jsp");
             rt.forward(request, response);
         } else {
@@ -74,6 +79,7 @@ public class addAccount extends HttpServlet {
             newUser.setLoaiTaiKhoan(loaiTK);
             newUser.setAvatar(Configs.IMG_PATH_AVATAR_DEFAULT);
             newUser.setNgCachLy(null);
+            newUser.setKhuCachLy(khu);
             taiKhoanDAO.create(newUser);
 
             Notification noti = new Notification("Success", "Thêm tài khoản nhân sự thành công.", "success");

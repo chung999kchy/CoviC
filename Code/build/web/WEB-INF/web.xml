@@ -104,6 +104,10 @@
         <servlet-name>updateAccount</servlet-name>
         <servlet-class>controller.base.updateAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ScanQR</servlet-name>
+        <servlet-class>controller.base.ScanQR</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -207,6 +211,10 @@
     <servlet-mapping>
         <servlet-name>updateAccount</servlet-name>
         <url-pattern>/myaccount/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ScanQR</servlet-name>
+        <url-pattern>/ScanQR</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
