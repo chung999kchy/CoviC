@@ -7,6 +7,7 @@
 <%@page import="utils.QR_CODE"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="<%=request.getContextPath()%>/assets/css/accountDetail.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/assets/js/qrcode.min.js"></script>
 <div class=" user-container ">
     <c:if test = "${not empty userLogin}">
         <div class="menu">
@@ -53,13 +54,22 @@
                     TaiKhoan tk = (TaiKhoan) session.getAttribute("userLogin");
                     NguoiCachLy nguoi2 = tk.getNgCachLy();
                     QR_CODE code = new QR_CODE();
-                    code.addQR_CODE(nguoi2);
+                    String link = code.addQR_CODE(nguoi2);
                 %>
                 <br/>
-                <img src="<%=request.getContextPath()%>/${initParam.imgPath}code.png" style="display:none" id="ma_show_info2"/>
+                <br/>
+                <div id="id_qrcode" style="display: none;"></div>
                 <script>
+                    var qrcode = new QRCode("id_qrcode", {
+                        text: "<%=link%>",
+                        width: 150,
+                        height: 150,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
                     $("#ma_show2").click(function () {
-                        $("#ma_show_info2").toggle(1000);
+                        $("#id_qrcode").toggle(1000);
                     });
                 </script>
             </c:if>

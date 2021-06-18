@@ -62,7 +62,7 @@ public class BarcodeDAO implements DAO<Barcode> {
     }
 
     public Barcode findByMa(String ma) {
-        String sql = "select * from barcode where ma= '"+ma+"';";
+        String sql = "select * from barcode where ma= '"+ma+"' and now() < time_end and now() > time_begin;";
         List<Barcode> qq = new ArrayList<>();
         qq = parse(sql);
         return (qq.isEmpty() ? null : qq.get(0));

@@ -68,7 +68,7 @@ public class QR_CODE {
         }
     }
 
-    public void addQR_CODE(NguoiCachLy nguoi) {
+    public String addQR_CODE(NguoiCachLy nguoi) {
 
         int lan = 0;
         int hour = 1;
@@ -92,8 +92,7 @@ public class QR_CODE {
 
         // tao ma qr-code hien thi html
         String link = "localhost:8085/datn/ScanQR?ma=" + ma;
-        String file = "C:\\Users\\CHUNG\\Documents\\NetBeansProjects\\CoviC\\Code\\web\\assets\\img\\code.png";
-        CREATE_QR(link, file);
         System.out.println("da tao ma tai link: " + link);
+        return link;
     }
 }
