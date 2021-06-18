@@ -221,6 +221,7 @@ CREATE TABLE `barcode` (
   `ma` varchar(45) NOT NULL,
   `time_begin` datetime NOT NULL,
   `time_end` datetime NOT NULL,
+  `lan` int NOT NULL,
   KEY `ng_cach_ly_id_idx` (`ng_cach_ly_id`),
   CONSTRAINT `ng_cach_ly_id` FOREIGN KEY (`ng_cach_ly_id`) REFERENCES `nguoi_cach_ly` (`id_nguoi_cach_ly`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -232,7 +233,7 @@ CREATE TABLE `barcode` (
 
 LOCK TABLES `barcode` WRITE;
 /*!40000 ALTER TABLE `barcode` DISABLE KEYS */;
-INSERT INTO `barcode` VALUES (9,'d8f30c4b4a04d21a061fe9978f7306ff','2021-05-30 16:17:25','2021-05-30 17:17:25');
+INSERT INTO `barcode` VALUES (9,'d8f30c4b4a04d21a061fe9978f7306ff','2021-05-30 16:17:25','2021-05-30 17:17:25', 0);
 /*!40000 ALTER TABLE `barcode` ENABLE KEYS */;
 UNLOCK TABLES;
 
