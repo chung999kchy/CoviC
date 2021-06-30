@@ -45,6 +45,7 @@ public class addAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String tenDN = request.getParameter("ten_dang_nhap");
         String password = request.getParameter("mat_khau");

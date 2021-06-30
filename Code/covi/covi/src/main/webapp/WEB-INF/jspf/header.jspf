@@ -56,7 +56,7 @@
                         <div class="user-info">
                             <ul class="user-info__list">
                                 <li class="user-info__item"><a href="<%=request.getContextPath()%>/myaccount/accountDetail.jsp">Tài khoản của tôi</a></li>
-                                <li class="user-info__item"><a href="">Đơn của tôi</a></li> 
+                                <li class="user-info__item"><a href="<%=request.getContextPath()%>/Don/view-list">Đơn của tôi</a></li> 
                             </ul>
                         </div>
                     </div>                   

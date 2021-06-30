@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <meta name ="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="icon" href="<%=request.getContextPath()%>/assets/img/logo.jpg" type="image/icon type">
+        <link rel="icon" href="<%=request.getContextPath()%>/assets/img/logoInHtml.jpg" type="image/icon type">
 
         <!-- CSS File -->
         <link rel="stylesheet" type="text/css" media="screen" href="<%=request.getContextPath()%>/assets/css/base/reset.css">
@@ -57,7 +57,7 @@
                         <div class="user-info">
                             <ul class="user-info__list">
                                 <li class="user-info__item"><a href="<%=request.getContextPath()%>/myaccount/accountDetail.jsp">Tài khoản của tôi</a></li>
-                                <li class="user-info__item"><a href="">Đơn của tôi</a></li> 
+                                <li class="user-info__item"><a href="<%=request.getContextPath()%>/Don/view-list">Đơn của tôi</a></li> 
                             </ul>
                         </div>
                     </div>                   

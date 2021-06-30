@@ -35,6 +35,7 @@ public class updatePhong extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         Hashtable<String, String> my_dict = new Hashtable<>();
         PhongDAO dao = new PhongDAO();
         Phong phong = dao.get(Integer.parseInt(request.getParameter("idPhong")));

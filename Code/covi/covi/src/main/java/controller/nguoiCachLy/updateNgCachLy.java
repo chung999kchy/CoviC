@@ -41,6 +41,7 @@ public class updateNgCachLy extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         Hashtable<String, String> my_dict = new Hashtable<>();
         NguoiCachLyDAO dao = new NguoiCachLyDAO();

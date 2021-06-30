@@ -39,6 +39,7 @@ public class ScanQR extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String ma = request.getParameter("ma");
         NguoiCachLyDAO ngDao = new NguoiCachLyDAO();
         KqXetNghiemDAO kqDao = new KqXetNghiemDAO();

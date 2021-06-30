@@ -100,9 +100,9 @@ public class TaiKhoanDAO implements DAO<TaiKhoan> {
             prep.setString(4, t.getTenNguoiDung());
             prep.setInt(5, t.getSoDienThoai());
             prep.setString(6, t.getAvatar());
-            if (t.getKhuCachLy() != null) prep.setInt(7, t.getKhuCachLy().getIdKhuCachLy());
-
-            //System.out.println(prep);
+            if(t.getKhuCachLy() != null) prep.setInt(7, t.getKhuCachLy().getIdKhuCachLy());
+            else prep.setNull(7, java.sql.Types.INTEGER);
+            System.out.println("alo:"+prep);
             prep.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

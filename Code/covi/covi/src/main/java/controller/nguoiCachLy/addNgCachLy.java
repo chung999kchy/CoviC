@@ -47,6 +47,7 @@ public class addNgCachLy extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String ho_ten = request.getParameter("ho_ten");
         String phan_loai = request.getParameter("phan_loai");
